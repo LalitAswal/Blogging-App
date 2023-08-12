@@ -4,14 +4,11 @@ const cors = require('cors');
 const cookieSession = require('cookie-session');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
-dotenv.config({ path: 'config/config.env'})
+dotenv.config({ path: 'config/config.env'});
+require('./config/dbConfig.js');
 
 
-
-
-
-
-
+// middleware
 app.use(cors());
 app.use(bodyParser.json());
 app.use(
@@ -23,4 +20,4 @@ app.use(
 );
 
 
-module.exports =app;
+module.exports = app;
