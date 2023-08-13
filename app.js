@@ -7,6 +7,8 @@ const dotenv = require('dotenv');
 dotenv.config({ path: 'config/config.env'});
 require('./config/dbConfig.js');
 
+const usersRoutes = require('./routes/users.routes.js');
+
 
 // middleware
 app.use(cors());
@@ -19,5 +21,7 @@ app.use(
   })
 );
 
+
+app.use('/', usersRoutes);
 
 module.exports = app;
