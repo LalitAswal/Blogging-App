@@ -8,6 +8,7 @@ dotenv.config({ path: 'config/config.env'});
 require('./config/dbConfig.js');
 
 const usersRoutes = require('./routes/users.routes.js');
+const postRoutes = require('./routes/post.routes.js');
 
 
 // middleware
@@ -23,5 +24,6 @@ app.use(
 
 
 app.use('/', usersRoutes);
+app.use('/post', postRoutes)
 
 module.exports = app;
