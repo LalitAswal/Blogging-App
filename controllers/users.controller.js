@@ -1,4 +1,3 @@
-const UserModels = require("../models/usersModel");
 const usersModel = require("../models/usersModel");
 const jwt = require("jsonwebtoken");
 
@@ -30,7 +29,6 @@ const login = async (req, res) => {
     if (!email || !password) {
       return res.status(400).json({ message: `Empty Fields are not allowed` });
     }
-    
     let result = await usersModel.findOne({ email: email, password: password });
     console.log(result);
     if (!result) {
@@ -47,31 +45,4 @@ const login = async (req, res) => {
   }
 };
 
-
-const userDetails = async(req, res) => { 
-  try {
-
-    const email = req.email;
-    if(!email){
-      return res.status(404).json({ message:`Invalid email` });
-    }
-    const UserAggregate = [
-      { $match: { email: email }},
-      {
-        $project :{
-          _id:0,
-          password:0,
-          __v:0
-      }
-    }
-    ];
-    let data = await UserModels.aggregate(UserAggregate);
-    return res.status(200).json({ message:data})
-    
-  } catch (error) {
-    return res.status(500).json({ message:`invalid response`})
-    
-  }
-}
-
-module.exports = { registrations, login, userDetails };
+module.exports = { registrations, login };
