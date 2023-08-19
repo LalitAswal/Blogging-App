@@ -1,4 +1,5 @@
 const postModel = require("../models/postModel");
+const {setValue, getValue, deleteValue} = require("../config/redisConfig");
 
 let createPost = async (req, res) => {
   try {
@@ -26,10 +27,19 @@ let createPost = async (req, res) => {
 
 let postList = async (req, res) => {
   try {
+    const getRedisValue = await getValue(postList);
+    if(getRedisValue) {
+      console.log(`getting value from redis`);
+    return res.status(200).json({ data: result });
+
+    }
     const result = await postModel.find();
+    await setValue('postList', JSON.stringify(result));
+    console.log(`getting value from db`);
+
     return res.status(200).json({ data: result });
   } catch (error) {
-    return res.status(500).json({ message: `internal error+` });
+    return res.status(500).json({ message: `internal error${error}}` });
   }
 };
 
