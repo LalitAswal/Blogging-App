@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const {registrations, login} = require('../controllers/users.controller');
+const authentication = require('../middleware/jwtMiddleware');
+
+const {registrations, login, userDetails} = require('../controllers/users.controller');
 
 
 
 router.post('/', registrations);
 router.post('/login', login);
+router.get('/user_Details',authentication, userDetails);
 
 
 
