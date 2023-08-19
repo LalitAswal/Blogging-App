@@ -1,16 +1,18 @@
-import { Route , Routes} from 'react-router-dom';
+import { Route, Routes}  from 'react-router-dom';
 import Login from './component/Login';
-import SignUp from './component/Signup';
+import SighUp  from './component/Signup';
 
-const App = () => {
+
+
+const App = () =>{
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
+            <Routes>
+      <Route exact  path="/"      element ={ <Login/>}/>
+      <Route exact  path="/signup"      element ={ <SighUp/>}/>
       </Routes>
     </div>
-  ); // vuseRout
-}
+  );
+  }
 
 export default App;

@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import {  useNavigate } from 'react-router-dom';
-import '../component/main.css';
-
 
 
  const SignUp = ()=>{
@@ -15,7 +13,6 @@ import '../component/main.css';
     const SubmitFom = async(e)=>{
         e.preventDefault()
         try {
-            console.log('cgejcing singup submit');
             const response = await fetch('http://localhost:4000',{
                 method:"POST",
                 headers:{ 'Content-Type': 'application/json' },
@@ -31,6 +28,8 @@ import '../component/main.css';
             navigate('/signup')
         }
     }
+
+    // http://localhost:4000/api/v1/signUp
     
 
     return(

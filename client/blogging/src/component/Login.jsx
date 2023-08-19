@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import '../component/main.css';
-
 
 function Login() {
   const [userId, setUserId] = useState("");
@@ -10,10 +8,7 @@ function Login() {
 
   const SubmitForm = async (e) => {
     e.preventDefault();
-
     try {
-      console.log('cgejcing login submit');
-
       const response = await fetch("http://localhost:4000/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
