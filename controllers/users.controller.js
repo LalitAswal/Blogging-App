@@ -9,7 +9,7 @@ const registrations = async (req, res) => {
     if (!firstName || !lastName || !email || !password) {
       return res.status(400).json({ message: `Empty Fields are not allowed` });
     }
-    await usersModel.insertMany({
+    await usersModel.create({
       firstName: firstName,
       lastName: lastName,
       email: email,
@@ -26,11 +26,13 @@ const registrations = async (req, res) => {
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log(`checking post controlllers`, email, password);
+
 
     if (!email || !password) {
       return res.status(400).json({ message: `Empty Fields are not allowed` });
     }
-    
+    console.log(`checking post controlllers`)
     let result = await usersModel.findOne({ email: email, password: password });
     console.log(result);
     if (!result) {
