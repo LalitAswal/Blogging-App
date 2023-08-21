@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;1,300;1,600&display=swap'); 
+
+
+*{
+       padding:0;
+       margin: 0;
+       box-sizing: border-box;
+       font-family: 'Titillium Web', sans-serif;
+}
+
+:root {
+   --mainColor : #f6ea00;
+   --mainColorLight :#5767aa;
+   --secondaryColor : rgb(244, 15, 15);
+   --textColor : rgb(20, 4, 10);
+}
+
+header{
+   display: flex;
+   align-items: center;
+   justify-content:  space-between;
+   height: 50px;
+   padding: 0 2rem;
+   background-color: var(--mainColor);
+   color : var(--textColor);
+}
+
+nav a{
+   margin : 0 2rem;
+   color:  var( --textColor);
+   text-decoration: none; 
+}
+
+nav a:hover{
+   color: var(--secondaryColor);
+}
+
+header .nav-btn {
+   padding: 5px;
+   cursor: pointer;
+   background: transparent;
+   border: none;
+   outline:  none;
+   color: var(--textColor);
+   visibility: hidden;
+   opacity: 0;
+}
+
+
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 70%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    font-size: 15px;
+  }
+  a
+  #customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #customers tr:hover {background-color: #ddd;}
+  
+  #customers th {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: center;
+    background-color: #04AA6D;
+    color: white;
+  }
+  
+  div{
+    margin-top: px;
+  
+  }
+  form{
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+    margin-top: 30px;
+  
+  }
+ 
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+  }
+  
+ 
+  
+  .card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  .login {
+    text-align: center;
+    margin-top: 50px;
+    border: 2px;
+    padding: 34px 30px;
+
+  }
+
+  #username, #password{
+    border: 2px solid white;
+    margin-top: 2px;
+    margin-bottom: 5px;
+    padding: 14px 20px;
+    margin: 8px 0;
+
+
+  }
+  input[type=text], input[type=password]{
+    border: 1px solid rgb(10, 10, 10);
+    padding: 14px 20px;
+    margin: 8px 0;
+    cursor: pointer;
+    width: 100%;
+  }
+  button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+
+  }
+
+  .signup{
+    text-align: center;
+    margin-top: 50px;
+    border: 100px;
+    padding: 34px 400px;
+  }

@@ -1,24 +1,27 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import '../style/login.css'
 
 function Login() {
-  const [userId, setUserId] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const SubmitForm = async (e) => {
+  const submitForm = async (e) => {
     e.preventDefault();
     try {
       const response = await fetch("http://localhost:4000/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId, password }),
+        body: JSON.stringify({ email, password }),
       });
+
       if (response.status === 401) {
-        alert(" incorrect userId or password");
+        alert("Incorrect email or password");
         navigate("/");
       } else {
         const data = await response.json();
+        console.log(data)
         localStorage.setItem("jwt", data.token);
         navigate("/home");
       }
@@ -28,32 +31,35 @@ function Login() {
     }
   };
 
-  const HandleSignUp = () => {
+  const handleSignUp = () => {
     navigate("/signup");
   };
+
   return (
-    <div class="login">
-      <form onSubmit={SubmitForm}>
-        <label id="username">
-          UserID:
+    <div className="login">
+      <form onSubmit={submitForm}>
+        <label htmlFor="username">
+          Email:
           <input
             type="text"
-            value={userId}
-            onChange={(e) => setUserId(e.target.value)}
+            id="username"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </label>
         <br />
-        <label id="password">
+        <label htmlFor="password">
           Password:
           <input
             type="password"
+            id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
         <br />
         <button type="submit">Log In</button>
-        <button onClick={HandleSignUp}>signup</button>
+        <button type="button" onClick={handleSignUp}>Sign Up</button>
       </form>
     </div>
   );
