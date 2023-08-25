@@ -1,3 +1,19 @@
+
+const exec = mongoose.Query.prototype.exec;
+
+mongoose.Query.prototype.exec = async function() {
+
+ 	const result = await exec.apply(this, arguments);
+
+    console.log('Data Source: Database');
+    return result;
+}
+mongoose.Query.prototype.cache = function(options = {}) {
+    this.enableCache = true;
+    this.hashKey = JSON.stringify(options.key || 'default');
+
+    return this;
+};
 mongoose.Query.prototype.exec = async function() {
     if (!this.enableCache) {
         console.log('Data Source: Database');
