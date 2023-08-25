@@ -36,16 +36,22 @@ const login = async (req, res) => {
     if (!email || !password) {
       return res.status(400).json({ message: `Empty Fields are not allowed` });
     }
-    let result = await usersModel.findOne({ email: email, password: password });
+    let result = await usersModel.findOne({ email: email });
     console.log(result);
+
+
     if (!result) {
-    let result = await usersModel.findOne({ email: email});
-    
+      console.log('checking result', result);
+     return res.status(400).json({ message: `Invalid Email or Password` });
+    }
     let passwordCheck = bcrypt.compare(password, result.password);
 
     if (!passwordCheck) {
+      console.log('checking passwordCheck', passwordCheck);
+
       return res.status(400).json({ message: `Invalid Email or Password` });
     }
+
     const expireTime = process.env.jwtExpiryTime;
     const privateKey = process.env.jwtPrivateKey;
     console.log(expireTime, privateKey);
@@ -55,7 +61,7 @@ const login = async (req, res) => {
   } catch (error) {
     return res.status(500).json({ message: `Error updating` , error: error });
   }
-};
+}
 
 
 const userDetails = async(req, res) => { 

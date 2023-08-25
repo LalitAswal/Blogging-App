@@ -27,14 +27,21 @@ let createPost = async (req, res) => {
 
 let postList = async (req, res) => {
   try {
-    const getRedisValue = await getValue(postList);
-    if(getRedisValue) {
-      console.log(`getting value from redis`);
-    return res.status(200).json({ data: result });
+    console.log('checking post list');
+    // const redisKey = 'redisPostList'; // Redis key for storing the value
 
-    }
+    // const getRedisValue = await getValue(redisKey);
+    // console.log('checking getRedisValue',getRedisValue);
+
+    // if(getRedisValue) {
+    //   console.log(`getting value from redis`);
+    // return res.status(200).json({ data: result });
+
+    // }
     const result = await postModel.find();
-    await setValue('postList', JSON.stringify(result));
+    // let check = await setValue('redisPostList', JSON.stringify(result));
+    // console.log('checking',check);
+    
     console.log(`getting value from db`);
 
     return res.status(200).json({ data: result });
