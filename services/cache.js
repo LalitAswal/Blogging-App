@@ -5,7 +5,6 @@ mongoose.Query.prototype.exec = async function() {
 
  	const result = await exec.apply(this, arguments);
 
-    console.log('Data Source: Database');
     return result;
 }
 mongoose.Query.prototype.cache = function(options = {}) {
@@ -16,7 +15,6 @@ mongoose.Query.prototype.cache = function(options = {}) {
 };
 mongoose.Query.prototype.exec = async function() {
     if (!this.enableCache) {
-        console.log('Data Source: Database');
         return exec.apply(this, arguments);
     }
 
